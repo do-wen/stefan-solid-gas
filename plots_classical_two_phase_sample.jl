@@ -304,7 +304,6 @@ function non_uniform_scale_theta_adv_bc_newton_analytical_comparison(p::Dict, s:
                 linestyle = [:solid :solid :dash :dash],
                 label = [L"T_{\textrm{numerical}}" "" L"T_{\textrm{analytical}}" ""],
                 legend = :bottomright);
-                scatter!([xI(t, lambda, p["a_c"])], [0], markershape = :rect, color = :black, label = "");
                 annotate!(xI(t, lambda, p["a_c"])+0.018, 0, L"1", annotationfontsize = 10);
                 ylabel!(L"T");
                 xlabel!(L"x");
@@ -323,13 +322,9 @@ function non_uniform_scale_theta_adv_bc_newton_analytical_comparison(p::Dict, s:
                     linestyle = [:solid :solid :dash :dash],
                     label = "",
                     legend = :bottomright);
-                    scatter!([xI(0.042, lambda, p["a_c"])], [0], markershape = :rect, color = :black, label = "");
                     annotate!(xI(0.042, lambda, p["a_c"])+0.018, 0, L"2", annotationfontsize = 10);
-                    scatter!([xI(0.124, lambda, p["a_c"])], [0], markershape = :rect, color = :black, label = "");
                     annotate!(xI(0.124, lambda, p["a_c"])+0.018, 0, L"3", annotationfontsize = 10);
-                    scatter!([xI(0.206, lambda, p["a_c"])], [0], markershape = :rect, color = :black, label = "");
                     annotate!(xI(0.206, lambda, p["a_c"])+0.018, 0, L"4", annotationfontsize = 10);
-                    scatter!([xI(0.288, lambda, p["a_c"])], [0], markershape = :rect, color = :black, label = "");
                     annotate!(xI(0.288, lambda, p["a_c"])+0.018, 0, L"5", annotationfontsize = 10);
             end
         end

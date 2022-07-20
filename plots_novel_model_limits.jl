@@ -416,7 +416,6 @@ function non_uniform_scale_theta_adv_bc_newton(p::Dict, s::Dict)
                 color = [color_init color_init],
                 label = ["" ""],
                 legend = :bottomright);
-                scatter!([0.06], [163.5], markershape = :rect, color = :black, label = "");
                 annotate!(0.06+dist, 163.5+dist_y, L"1", annotationfontsize = 10);
                 ylabel!(L"Temperature $T$ (K)");
                 xlabel!(L"Position $x$ (m)");
@@ -451,13 +450,9 @@ function non_uniform_scale_theta_adv_bc_newton(p::Dict, s::Dict)
                     color = :darkgrey,
                     linestyle = [:solid :solid],
                     label = ["initial condition" ""])
-                scatter!([0.06], [106], markershape = :rect, color = :black, label = "");
                 annotate!(0.06+dist, 106+dist_y, L"2", annotationfontsize = 10);
-                scatter!([0.06], [83], markershape = :rect, color = :black, label = "");
                 annotate!(0.06+dist, 83+dist_y, L"3", annotationfontsize = 10);
-                scatter!([0.06], [57], markershape = :rect, color = :black, label = "");
                 annotate!(0.06+dist, 57+dist_y, L"4", annotationfontsize = 10);
-                scatter!([0.06], [22.5], markershape = :rect, color = :black, label = "");
                 annotate!(0.06+dist, 22.5+dist_y, L"5", annotationfontsize = 10);
                 lens!([0.1, 0.11], [184.5, 185.1], inset = (1, bbox(0.05, 0.3, 0.3, 0.4, :top, :right)),
                     subplot=2,

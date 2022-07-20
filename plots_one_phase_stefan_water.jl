@@ -40,53 +40,55 @@ function plot_classical_stefan_problem(p::Dict)
     annotate!(60*60*10+distx, 2*√p["a_h"]*λ*sqrt(60*60*10)+disty, L"5", annotationfontsize = 10);
     display(interface_plot);
     savefig(interface_plot,"interface_classical_stefan.pdf");
+
     x = collect(range(0, L, 499));
     t = 60*60*2
-    x_I = 2*√p["a_h"]*λ*sqrt(t)
+    x_I = 2*√p["a_h"]*λ*sqrt(t);
     push!(x, x_I);
     sort!(x);
-    tmp_plot = plot(x, max.(T0.+(p["T_f"]-T0)*(erf.(x./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), p["T_f"]), legend = :none, color = :blue);
+    idx = findall(y->y<x_I+0.000001 &&y > x_I - 0.000001, x)[1];
+    tmp_plot = plot([x[1:idx], x[idx:end]], [T0.+(p["T_f"]-T0)*(erf.(x[1:idx]./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), ones(500-idx+1) * p["T_f"]],
+    legend = :topright, color = [:orange :blue], label = ["Temperature in liquid phase" "Temperature in solid phase"]);
 
     x = collect(range(0, L, 499));
     t = 60*60*4
     x_I = 2*√p["a_h"]*λ*sqrt(t)
     push!(x, x_I);
     sort!(x);
-    plot!(x, max.(T0.+(p["T_f"]-T0)*(erf.(x./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), p["T_f"]), color = :blue);
+    idx = findall(y->y<x_I+0.000001 &&y > x_I - 0.000001, x)[1];
+    plot!([x[1:idx], x[idx:end]], [T0.+(p["T_f"]-T0)*(erf.(x[1:idx]./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), ones(500-idx+1) * p["T_f"]], color = [:orange :blue], label = ["" ""]);
 
     x = collect(range(0, L, 499));
     t = 60*60*6
     x_I = 2*√p["a_h"]*λ*sqrt(t)
     push!(x, x_I);
     sort!(x);
-    plot!(x, max.(T0.+(p["T_f"]-T0)*(erf.(x./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), p["T_f"]), color = :blue);
+    idx = findall(y->y<x_I+0.000001 &&y > x_I - 0.000001, x)[1];
+    plot!([x[1:idx], x[idx:end]], [T0.+(p["T_f"]-T0)*(erf.(x[1:idx]./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), ones(500-idx+1) * p["T_f"]], color = [:orange :blue], label = ["" ""]);
 
     x = collect(range(0, L, 499));
     t = 60*60*8
     x_I = 2*√p["a_h"]*λ*sqrt(t)
     push!(x, x_I);
     sort!(x);
-    plot!(x, max.(T0.+(p["T_f"]-T0)*(erf.(x./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), p["T_f"]), color = :blue);
+    idx = findall(y->y<x_I+0.000001 &&y > x_I - 0.000001, x)[1];
+    plot!([x[1:idx], x[idx:end]], [T0.+(p["T_f"]-T0)*(erf.(x[1:idx]./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), ones(500-idx+1) * p["T_f"]], color = [:orange :blue], label = ["" ""]);
 
     x = collect(range(0, L, 499));
     t = 60*60*10
     x_I = 2*√p["a_h"]*λ*sqrt(t)
     push!(x, x_I);
     sort!(x);
-    plot!(x, max.(T0.+(p["T_f"]-T0)*(erf.(x./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), p["T_f"]), color = :blue);
+    idx = findall(y->y<x_I+0.000001 &&y > x_I - 0.000001, x)[1];
+    plot!([x[1:idx], x[idx:end]], [T0.+(p["T_f"]-T0)*(erf.(x[1:idx]./(2*sqrt.(p["a_h"]*t))))/(erf(2*√p["a_h"]*λ*sqrt.(t)/(2*sqrt.(p["a_h"]*t)))), ones(500-idx+1) * p["T_f"]], color = [:orange :blue], label = ["" ""]);
 
     distx = 0.0001;
     disty = -0.7;
-    scatter!([0.0173], [280], markershape = :rect, color = :black, label = "");
     annotate!(0.0173+distx, 280+disty, L"1", annotationfontsize = 10);
-    scatter!([0.0243], [280], markershape = :rect, color = :black, label = "");
     annotate!(0.0243+distx, 280+disty, L"2", annotationfontsize = 10);
-    scatter!([0.0297], [280], markershape = :rect, color = :black, label = "");
     annotate!(0.0297+distx, 280+disty, L"3", annotationfontsize = 10);
-    scatter!([0.0345], [280], markershape = :rect, color = :black, label = "");
     annotate!(0.0345+distx, 280+disty, L"4", annotationfontsize = 10);
-    scatter!([0.0385], [280], markershape = :rect, color = :black, label = "");
-    annotate!(0.0385+distx, 280+disty, L"5", annotationfontsize = 10);
+    annotate!(0.0388+distx, 280+disty, L"5", annotationfontsize = 10);
 
     ticks = [298.15, 290, 280, 270, 273.15];
     yticks!(ticks);
